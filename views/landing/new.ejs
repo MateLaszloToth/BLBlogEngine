@@ -1,17 +1,23 @@
 <% include ../partials/header %>
-<h1>Adj Hozzá új bejegyzést</h1>
-<div>
-    <form action="/" method="GET">
-        <label for="title">Cím</label>
-        <input type="text" name="title">
-        <label for="img">Kép url</label>
-        <input type="text" name="img">
-        <label for="content">Szöveg</label>
-        <textarea id="content" name="content" 
-            cols="50" rows="10">Na csapasd ;)</textarea>
-        <button type="submit">Küldés</button>
-    </form>
-</div>
+<% include ../partials/nav %>
+
+<body>
+    <h1>Adj Hozzá új bejegyzést</h1>
+    <div>
+        <form action="/" method="GET">
+            <label for="title">Cím</label>
+            <input type="text" name="title">
+            <label for="img">Kép url</label>
+            <input type="text" name="img">
+            <label for="content">Szöveg</label>
+            <textarea id="content" name="content" 
+                cols="50" rows="10">Na csapasd ;)</textarea>
+            <button type="submit">Küldés</button>
+        </form>
+    </div>
+
+
 
 
 <% include ../partials/footer %>
+<!-- footer contains </body> -->

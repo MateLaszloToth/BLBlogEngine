@@ -1,0 +1,33 @@
+html, body{
+   width: 100vw; 
+   margin: 0;
+   padding: 0;
+   background-color: rgba(0, 0, 0, 0.5);
+   color: white;
+}
+
+header + img{
+   width: 100vw;
+   height: 100vh;
+   border: solid 2px black;
+   position: fixed;
+   top: 9vh; /* the height of the header */
+   right: 0;
+   left: 0;
+   z-index: -1;
+   box-sizing: border-box;
+}
+
+main article{
+   background-color: rgba(0, 0, 0, 0.831);
+   margin-top: 101vh;
+   height: 150vh;
+}
+.container{
+   width: 60vw;
+   margin-left: auto;
+   margin-right: auto;
+   padding: 30px;
+   box-sizing: border-box;
+}
+

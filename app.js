@@ -19,6 +19,8 @@ const   express         = require('express'),
 
 app.set('view engine', 'ejs');
 
+app.use(express.static(__dirname + '/public')); // set '...' directory to serve static assets
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', indexRoutes);
 app.use('/blog', blogRoutes);

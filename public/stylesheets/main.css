@@ -24,10 +24,21 @@ main article{
    height: 150vh;
 }
 .container{
-   width: 60vw;
+   width: 70vw;
    margin-left: auto;
    margin-right: auto;
    padding: 30px;
    box-sizing: border-box;
+   min-height: 100vh;
 }
 
+/* CKEditor */
+form{ /* textarea is replaced */
+   margin-top: 9vh; /* height of the header, push it below */
+   min-height: 75vh;
+}
+
+form button{
+   width: 80px;
+   height: 40px;
+}

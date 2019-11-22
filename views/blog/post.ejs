@@ -13,6 +13,16 @@
                                 </div>
                             </div>
                         </article>
+                        <form action="/blog/<%= post.art_id/comments" method="POST">
+                            <textarea name="newComment" id="newComment" cols="30" rows="10"></textarea>
+                            <button>Mentés</button>
+                        </form>
+                        <% comments.forEach(comment => { %>
+                            <article>
+                                <p><span><%= comment.author %></span></p>
+                                <p><%= comment.content%></p>
+                            </article>
+                        <% }); %>
                 
         </div>
     </main>

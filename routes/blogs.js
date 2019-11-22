@@ -28,14 +28,27 @@ router.get('/', (req, res)=>{
     }); 
 });
 
-router.get('/post/:id', (req, res)=>{
+router.get('/:post_id', (req, res)=>{
     db.one(`SELECT art_id, users.f_name l_name, users.l_name f_name,
             content, TO_CHAR(created, 'yyyy mm dd') created
         FROM articles
         LEFT JOIN users ON articles.author_id = users.user_id   
-        WHERE type = $1 AND art_id = $2`, ['blog', req.params.id]) // first and last names are swapped because Hungarian names appear in reverse order
+        WHERE type = $1 AND art_id = $2`, ['blog', req.params.post_id]) // first and last names are swapped because Hungarian names appear in reverse order
         .then(post =>{
-            res.render('blog/post', {post: post});
+            db.any(`SELECT content, users.f_name l_name, users.l_name f_name,
+                    TO_CHAR(created, 'yyyy mm dd) created
+                FROM comments
+                LEFT JOIN users ON comments.author_id = users.user_id
+                WHERE art_id = $1
+                ORDER BY created DESC`, [post.art_id]) // first and last names are swapped because Hungarian names appear in reverse order
+            .then(comments => {
+                res.render('blog/post', {post: post, comments: comments});
+            })
+            .catch(error => {
+                console.log("Something went wrong while querying comments");
+                console.log(err);
+                res.redirect('back');
+            })    
         })
         .catch(error =>{
             console.log(error);

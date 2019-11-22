@@ -3,18 +3,11 @@ const   express         = require('express'),
         pgp             = require('pg-promise')(/* options */),
         db              = require('./database/database'),
         bodyParser      = require('body-parser')
-        blogRoutes      = require('./routes/blogs'),
-        indexRoutes     = require('./routes/index'),
+        blogRouter      = require('./routes/blogs'),
+        indexRouter     = require('./routes/index'),
         aboutRouter     = require('./routes/about'),
-        contactsRouter  = require('./routes/contacts');
-
-// db.one('SELECT *  ',)
-//   .then(function (data) {
-//     console.log('DATA:', data.value)
-//   })
-//   .catch(function (error) {
-//     console.log('ERROR:', error)
-//   })
+        contactsRouter  = require('./routes/contacts'),
+        commentRouter   = require('./routes/comments');
 
 
 app.set('view engine', 'ejs');
@@ -22,10 +15,11 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public')); // set '...' directory to serve static assets
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.use('/', indexRoutes);
-app.use('/blog', blogRoutes);
+app.use('/', indexRouter);
+app.use('/blog', blogRouter);
 app.use('/about', aboutRouter);
 app.use('/contacts', contactsRouter);
+app.use('/blog/:post_id/comments', commentRouter);
 
 app.get('/', (req, res)=>{
     res.render('landing/index');

@@ -1,23 +1,24 @@
-<% include ../partials/headerPlusEditor %>
+<% include ../partials/header %>
 
 
-<body>
-    <h1>Adj Hozzá új bejegyzést</h1>
-    <div>
-        <form action="/" method="GET">
-            <label for="title">Cím</label>
-            <input type="text" name="title">
-            <label for="img">Kép url</label>
-            <input type="text" name="img">
-            <label for="content">Szöveg</label>
-            <textarea id="content" name="content" 
-                cols="50" rows="10">Na csapasd ;)</textarea>
+<div class="container">
+        <form action="/" method="POST">
+            <textarea name="editor1" id="editor1" rows="10" cols="80">
+                This is my textarea to be replaced with CKEditor.
+            </textarea>
+            <script>
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace( 'editor1', {
+                    customConfig: '',
+                    height: '60vh' 
+                });
+            </script>
             <button type="submit">Küldés</button>
         </form>
-    </div>
+</div>
 
 
-
-
+<script type="text/javascript" src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
 <% include ../partials/footer %>
 <!-- footer contains </body> -->

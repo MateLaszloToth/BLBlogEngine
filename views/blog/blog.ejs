@@ -3,21 +3,24 @@
     
     <main>
         <div class="grid-wrapper" >
-           <% posts.forEach(post => { %>
+            <% if(user && user.isadmin){ %>
+                <button href="/blog/new">Post</button>
+            <% } %>
+            <% posts.forEach(post => { %>
                <div class="grid-item">
                     <a href="/blog/<%= post.art_id %>">
                         <article>
-                                <div class="grid center-content">
-                                    <img src="https://baratosifit.files.wordpress.com/2019/04/8m0a9202.jpg" width="300px" height="180px">
-                                    <div class="center-content">
-                                        <p><span><%= post.f_name%> <%=post.l_name%></span> <span><%= post.created%></span></p>
-                                        <p><%= post.intro %>...</p>
-                                    </div>
+                            <div class="grid center-content">
+                                <img src="https://baratosifit.files.wordpress.com/2019/04/8m0a9202.jpg" width="300px" height="180px">
+                                <div class="center-content">
+                                    <p><span><%= post.f_name%> <%=post.l_name%></span> <span><%= post.created%></span></p>
+                                    <p><%= post.intro %>...</p>
                                 </div>
+                            </div>
                         </article>
                    </a>
                </div>
-           <% }); %>
+            <% }); %>
             <div class="grid-item">
                 <article>
                     <div class="center-content">
@@ -27,63 +30,10 @@
                     Fő területem a funkcionális edzés és az erőemelés.
                     Kora reggel és az esti órákban csoportos edzéseket tartok,
                     napközben pedig személyi edzésre vagyok elérhető.Barátosi Levente vagyok.
-                    
                     </p>
                     </div>
                 </article>
             </div>
-            <!-- <div class="grid-item">
-                <article>
-                    <div class="center-content">
-                    <img src="https://baratosifit.files.wordpress.com/2019/04/8m0a9202.jpg" width="300px" height="180px">
-                    <p>
-                    Barátosi Levente vagyok.
-                    Fő területem a funkcionális edzés és az erőemelés.
-                    Kora reggel és az esti órákban csoportos edzéseket tartok,
-                    napközben pedig személyi edzésre vagyok elérhető.
-                    </p>
-                    </div>
-                </article>
-            </div>
-            <div class="grid-item">
-                <article>
-                    <div class="center-content">
-                    <img src="https://baratosifit.files.wordpress.com/2019/04/8m0a9202.jpg" width="300px" height="180px">
-                    <p>
-                    Barátosi Levente vagyok.
-                    Fő területem a funkcionális edzés és az erőemelés.
-                    Kora reggel és az esti órákban csoportos edzéseket tartok,
-                    napközben pedig személyi edzésre vagyok elérhető.
-                    </p>
-                    </div>
-                </article>
-            </div>
-            <div class="grid-item">
-                <article>
-                    <div class="center-content">
-                    <img src="https://baratosifit.files.wordpress.com/2019/04/8m0a9202.jpg" width="300px" height="180px" >
-                    <p>
-                    Barátosi Levente vagyok.
-                    Fő területem a funkcionális edzés és az erőemelés.
-                    Kora reggel és az esti órákban csoportos edzéseket tartok,
-                    napközben pedig személyi edzésre vagyok elérhető.
-                    </p>
-                    </div>
-                </article>
-            </div>
-            <div class="grid-item">
-                <article>
-                    <div class="center-content">
-                    <img src="https://baratosifit.files.wordpress.com/2019/04/8m0a9202.jpg" width="300px" height="180px">
-                    <p>
-                    Barátosi Levente vagyok.
-                    Fő területem a funkcionális edzés és az erőemelés.
-                    Kora reggel és az esti órákban csoportos edzéseket tartok,
-                    napközben pedig személyi edzésre vagyok elérhető.
-                    </p>
-                    </div>
-                </article>
-            </div> -->
         </div>
     </main>
     

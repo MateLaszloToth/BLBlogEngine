@@ -6,7 +6,7 @@ router.get('/', (req, res)=>{
     //find posts in database and send it to the about page
     db.one('SELECT content FROM HTML WHERE title= $1', 'about')
     .then(about => {
-        console.log("successfully retrieved about article: " + about.content);
+        console.log("successfully retrieved about article");
         res.render('about/index', { about: about.content});
     })
     .catch(error =>{

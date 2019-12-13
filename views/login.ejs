@@ -1,0 +1,11 @@
+<% include partials/header %>
+<div class="container">
+<h1>Belépés</h1>
+<form action="/login" method="POST">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    email: <input type="email" name="email" required>
+    password: <input type="password" name="password" required>
+    <button type="submit">Belépés</button>
+</form>
+</div>
+<% include partials/footer %>

@@ -1,8 +1,14 @@
 const   express         = require('express'),
         app             = express(),
-        pgp             = require('pg-promise')(/* options */),
         db              = require('./database/database'),
-        bodyParser      = require('body-parser')
+        bcrypt          = require('bcryptjs'),
+        csurf           = require('csurf'),
+        bodyParser      = require('body-parser'),
+        flash           = require('express-flash'),
+        session         = require('client-sessions'),
+        passport        = require('passport'),
+        methodOverride  = require('method-override'),
+        helmet          = require('helmet'),
         blogRouter      = require('./routes/blogs'),
         indexRouter     = require('./routes/index'),
         aboutRouter     = require('./routes/about'),
@@ -13,8 +19,29 @@ const   express         = require('express'),
 app.set('view engine', 'ejs');
 
 app.use(express.static(__dirname + '/public')); // set '...' directory to serve static assets
-
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride('_method'));
+app.use(session({
+    cookieName: 'session',
+    secret: 'this is a beautiful day',
+    duration: 24 * 60 * 60 * 1000, // milliseconds (1 day)
+    cookie: {
+        ephemeral: true, // erease cookies when browser is closed
+        httpOnly: true, // no scripts are allowed
+        secure: false // value true works only with https
+    }
+}));
+
+app.use(helmet());
+app.use(csurf());
+//Init passport
+const initPassport = require('./auth/passport-config');
+initPassport(passport);
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+app.use(flash());
 app.use('/', indexRouter);
 app.use('/blog', blogRouter);
 app.use('/about', aboutRouter);
@@ -26,5 +53,6 @@ app.get('/', (req, res)=>{
 });
 
 app.listen(8080, ()=>{
+    
     console.log("Levi's server is listening on PORT: 8080" );
 });

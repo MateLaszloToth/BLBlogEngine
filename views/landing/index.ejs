@@ -23,7 +23,9 @@
                 keress fel bátran! 
             </p>
         </article>
-        <button><a href="new">Szerkeszt</a></button>
+        <% if(user && user.isadmin){ %> <!--locals.user could be used instead of typeof -->
+            <button><a href="new">Szerkeszt</a></button>
+        <% } %>
     </main>
 </div>
 <% include ../partials/footer %>

@@ -1,0 +1,16 @@
+<% include partials/header %>
+<div class="container">
+    <h1>Regisztráció</h1>
+    <form action="" method="POST">
+            <input type="hidden" name=_csrf value="<%=csrfToken%>" >
+    f-name: <input type="text" name="f_name" required>
+    l-name: <input type="text" name="l_name" required>
+        bday: <input type="date" name="bday">
+        phone: <input type="text" name="phone">
+        email: <input type="email" name="email" required>
+        password: <input type="password" name="password" required>
+        admin code: <input type="password" name="admin_code">
+        <button type="submit">Küldés</button>
+    </form>
+</div>
+<% include partials/footer %>

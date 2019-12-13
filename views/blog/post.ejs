@@ -1,31 +1,32 @@
 <% include ../partials/header %>
-<div class="container">
-    
+<div class="container"> 
     <main>
         <div class="" >
-                
-                       <article>
-                            <div class="grid center-content">
-                                <img src="https://baratosifit.files.wordpress.com/2019/04/8m0a9202.jpg" width="300px" height="180px">
-                                <div class="center-content">
-                                    <p><span><%= post.f_name%> <%=post.l_name%></span> <span><%= post.created%></span></p>
-                                    <p><%= post.content %></p>
-                                </div>
-                            </div>
-                        </article>
-                        <form action="/blog/<%= post.art_id/comments" method="POST">
-                            <textarea name="newComment" id="newComment" cols="30" rows="10"></textarea>
-                            <button>Mentés</button>
-                        </form>
-                        <% comments.forEach(comment => { %>
-                            <article>
-                                <p><span><%= comment.author %></span></p>
-                                <p><%= comment.content%></p>
-                            </article>
-                        <% }); %>
-                
+            <article>
+                <div class="grid center-content">
+                    <img src="https://baratosifit.files.wordpress.com/2019/04/8m0a9202.jpg" width="300px" height="180px">
+                    <div class="center-content">
+                        <p><span><%= post.f_name%> <%=post.l_name%></span> <span><%= post.created%></span></p>
+                        <p><%= post.content %></p>
+                    </div>
+                </div>
+            </article>
+            <form action="/blog/<%= post.art_id%>/comments" method="POST">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <input type="hidden" name="article_id" value="<%= post.art_id %>">
+                <textarea name="newComment" id="newComment" cols="30" rows="10"></textarea>
+                <button>Mentés</button>
+            </form>
+            <section>
+            <% comments.forEach(comment => { %>
+                <article>
+                    <p><span><%= comment.author %></span></p>
+                    <p><%= comment.content %></p>
+                </article>
+            <% }); %>
+            <% console.log(user_id) %>
+            </section>
         </div>
     </main>
-    
 </div>
 <%include ../partials/footer %>

@@ -1,19 +1,24 @@
 <% include ../partials/header %>
 <img src="https://baratosifit.files.wordpress.com/2019/04/8m0a9249.jpg?w=2000" 
         alt="">
-<div class="container">
-<main>
-    <article>
-        <h2>Kapcsolat:</h2>
-        <p>
-            Barátosi Levente – személyi edző
-            Facebook: <a href="http://facebook.com/baratosifit">http://facebook.com/baratosifit/</a>
-            E-mail: baratosifit@gmail.com
-            Tel: +36-70-500-8444
-        </p>
-    </article>   
+<main class="wide-bg">
+    <div class="container content-bg">
+        <article>
+            <h2>Kapcsolat:</h2>
+            <p>
+                Barátosi Levente – személyi edző
+                Facebook: <a href="http://facebook.com/baratosifit">http://facebook.com/baratosifit/</a>
+                E-mail: baratosifit@gmail.com
+                Tel: +36-70-500-8444
+            </p>
+        </article>  
+        <% if(user && user.isadmin){ %>
+            <div class="flex-container">
+                <a class="button" href="new">Szerkeszt</a>
+            </div>
+        <% } %> 
+    </div>
 </main>
-</div>
 
 <% include ../partials/footer %>
 <!-- footer contains </body> -->

@@ -1,14 +1,20 @@
 <% include ../partials/header %>
 <img src="https://baratosifit.files.wordpress.com/2019/04/8m0a9230.jpg"
     alt="Levente törökülésben mosolyog az edzőterem padlóján.">
-<div class="container">
-<main>
-<article>
-    <h2>Rólam</h2>
-    <p><%- about %></p>  
-</article>  
+
+<main class="wide-bg">
+    <div class="container content-bg">
+        <article>
+            <h2>Rólam</h2>
+            <p><%- about %></p>  
+        </article>  
+        <% if(user && user.isadmin){ %>
+            <div class="flex-container">
+                <a class="button" href="new">Szerkeszt</a>
+            </div>
+        <% } %>
+    </div>
 </main>
-</div>
 
 <% include ../partials/footer %> 
 <!-- footer contains </body> -->

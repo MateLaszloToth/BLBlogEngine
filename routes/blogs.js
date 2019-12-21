@@ -1,7 +1,8 @@
-const   express = require('express'),
-        router = express.Router(),
-        db = require('../database/database'),
-        htmlToText = require('html-to-text');
+const   express     = require('express'),
+        router      = express.Router(),
+        auth        = require('../auth/auth'),
+        db          = require('../database/database'),
+        htmlToText  = require('html-to-text');
 
 //GET Blog page
 router.get('/', (req, res)=>{
@@ -49,7 +50,7 @@ router.get('/:post_id', (req, res)=>{
                 res.render('blog/post', {
                     post: post,
                     comments: comments,
-                    user_id: req.user&&req.user.id ? req.user.id : null, // user exist only after auhtnetication
+                    user_id: req.user&&req.user.id ? req.user.id : null, // user exist only after authentication
                     csrfToken: req.csrfToken()
                 });
             })
@@ -66,7 +67,7 @@ router.get('/:post_id', (req, res)=>{
 });
 
 //POST new comment
-router.post('/:post_id/comments', (req, res)=>{
+router.post('/:post_id/comments', auth.checkAuthenticated, (req, res)=>{
     console.log(req.user);
     db.none(`INSERT INTO comments(content, article_id, author_id)
             VALUES($1, $2, $3)`, [req.body.newComment, Number(req.body.article_id), req.user.id])

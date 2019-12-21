@@ -16,6 +16,11 @@ header h1{
     margin-left: 2vw;
 
 }
+
+header h1 a{
+    text-decoration: none;
+    color: white;
+}
 nav{
     display: flex;
 }
@@ -30,14 +35,27 @@ nav ul{
 
 
 nav ul li a{
+    display: block;
     text-decoration: none;
     color: white;
-    border: solid 1px;
+    background-color: #037AFE;
     margin-right: 2vw;
-    padding: 0.5em 2em 0.5em 2em;
+    padding: 1em 2em 1em 2em;
+    border-bottom: blue 2px solid;
+    border-radius: 40px;
+
 }
+
 nav ul li a:hover{
     background-color: orange;
     color: black;
 }
 
+
+
+/* @media (max-width: 12450px) {
+.flex li a{
+
+}
+
+} */

@@ -39,6 +39,7 @@ function initialize(passport){
       making it accessible in our request handling.
     */
     passport.deserializeUser((id, done) =>{ //populates the req.user object with the queried info
+        //  capital letters are automatically decapitalized in the query
         db.oneOrNone(`SELECT f_name l_name, isadmin, user_id id
             FROM users
             WHERE user_id = $1`, [id]) // Hungarian names are in reverse order
@@ -47,6 +48,7 @@ function initialize(passport){
                 console.log('User not found by id during deserialization');
                 return done(null, false);
             }
+            console.log(user);
             done(null, user);
         })
         .catch(error =>{

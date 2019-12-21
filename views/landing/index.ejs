@@ -1,8 +1,9 @@
 <% include ../partials/header %>
-<img src="https://baratosifit.files.wordpress.com/2019/04/cropped-victor-freitas-569958-unsplash.jpg"
-    alt="Levente ökölpacsizik egy barátjával egy fárasztó edzés után">
-<div class="container">
-    <main>
+<div class="main-bg" style="background-image: url('https://baratosifit.files.wordpress.com/2019/04/cropped-victor-freitas-569958-unsplash.jpg')"></div>
+<!-- <img src="https://baratosifit.files.wordpress.com/2019/04/cropped-victor-freitas-569958-unsplash.jpg"
+    alt="Levente ökölpacsizik egy barátjával egy fárasztó edzés után"> -->
+<main class="wide-bg">
+    <div class="container content-bg">
         <article>
             <h2>Üdvözöllek az oldalamon!</h2>
             <p>
@@ -24,8 +25,11 @@
             </p>
         </article>
         <% if(user && user.isadmin){ %> <!--locals.user could be used instead of typeof -->
-            <button><a href="new">Szerkeszt</a></button>
+        <div class="flex-container">
+            <a class="button" href="new">Szerkeszt</a>
+        </div>
         <% } %>
-    </main>
-</div>
+    </div>
+</main>
+
 <% include ../partials/footer %>

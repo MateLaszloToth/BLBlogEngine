@@ -1,13 +1,18 @@
 const   express     = require('express'),
         router      = express.Router(),
+        auth        = require('../auth/auth'),
         db          = require('../database/database');
 
+// GET about page
 router.get('/', (req, res)=>{
     //find posts in database and send it to the about page
     db.one('SELECT content FROM HTML WHERE title= $1', 'about')
     .then(about => {
         console.log("successfully retrieved about article");
-        res.render('about/index', { about: about.content});
+        res.render('about/index', { 
+            about: about.content,
+            user: req.user    
+        });
     })
     .catch(error =>{
         console.log(error);
@@ -15,13 +20,13 @@ router.get('/', (req, res)=>{
      
 });
 
-//render 'new' page
-router.get('/new', (req, res)=>{
+//GET about/new page
+router.get('/new', auth.checkAuthenticated, (req, res)=>{
     res.render('about/new');
 });
 
-//Update about content
-router.post('/', (req, res)=>{
+//UPDATE about content
+router.put('/', auth.checkAuthenticated, (req, res)=>{
     const cKEditor = req.body.editor1; //retrieve the content of the editor
     console.log( "What up?\n" + cKEditor);
     
@@ -35,7 +40,7 @@ router.post('/', (req, res)=>{
         })
         .catch((error) =>{
             //failure
-            console.log(" error: " + error);
+            console.log("Error occired while updating about content: " + error);
             res.redirect('back');
         });
 });

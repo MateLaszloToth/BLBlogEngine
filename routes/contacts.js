@@ -5,7 +5,10 @@ const   express     = require('express'),
 
 // GET contacts page
 router.get('/', (req, res)=>{
-    db.one(`SELECT content, created FROM articles WHERE type = $1`, ['contacts'])
+    db.one(`SELECT content, TO_CHAR(created, 'yyyy mm dd') created,
+            TO_CHAR(modified, 'yyyy mm dd') modified 
+        FROM articles 
+        WHERE type = $1`, ['contacts'])
     .then(article =>{
         res.render('contacts/index', {
             article: article,
@@ -13,7 +16,7 @@ router.get('/', (req, res)=>{
         })
     })
     .catch(error =>{
-        console.log('Something went wrong while extracting contacts article: ' + error);
+        console.log('Error while extracting contacts article: ' + error);
         res.redirect('back');
     });
 });
@@ -26,14 +29,14 @@ router.get('/new', auth.checkAuthenticated, (req, res)=>{
 // UPDATE contacts page
 router.put('/', auth.checkAuthenticated, (req, res) =>{
     let sanContent = req.body.editor1; // Sanitize content !!
-    db.none(`UPDATE articles SET content = $1, author_id = $2
-            WHERE type = $3`, [sanContent, Number(req.body.id), 'contacts'])
-        .then(
-            res.redirect('/contacts')
-        )
-        .catch(error =>{
-            console.log('Erro during updating contacts: ' + error);
-        });
+    db.none(`UPDATE articles SET content = $1, author_id = $2, modified = NOW()
+        WHERE type = $3`, [sanContent, Number(req.body.id), 'contacts'])
+    .then(
+        res.redirect('/contacts')
+    )
+    .catch(error =>{
+        console.log('Erro during updating contacts: ' + error);
+    });
 });
 
 module.exports = router;

@@ -6,9 +6,10 @@ const   express     = require('express'),
 // GET about page
 router.get('/', (req, res)=>{
     //find posts in database and send it to the about page
-    db.one('SELECT content, author_id, created FROM articles WHERE type= $1', 'about')
+    db.one(`SELECT content, author_id, created, modified 
+        FROM articles 
+        WHERE type= $1`, 'about')
     .then(article => {
-        console.log("successfully retrieved about article");
         res.render('about/index', { 
             article: article,
             user: req.user    
@@ -29,7 +30,8 @@ router.get('/new', auth.checkAuthenticated, (req, res)=>{
 router.put('/', auth.checkAuthenticated, (req, res)=>{
     const content = req.body.editor1; //retrieve the content of the editor
     //update database with new content
-    db.none('UPDATE article SET content = $1, img_path = $2, intro = $3 WHERE type = $4',
+    db.none(`UPDATE article SET content = $1, img_path = $2, intro = $3, modified = NOW()
+        WHERE type = $4`,
         [content, req.body.img_path, req.body.intro, 'about'])
         .then((data) =>{
             //success

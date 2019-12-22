@@ -6,13 +6,23 @@ const   express     = require('express'),
         db          = require('../database/database');
         
 router.get('/', (req, res)=>{
-    console.log(req.user);
-    res.render('landing/index', {user: req.user });
+    db.one(`SELECT content, TO_CHAR(modified, 'yyyy mm dd') modified
+        FROM articles
+        WHERE type = $1`, ['landing'])
+    .then(article => {
+        res.render('landing/index', {
+            article: article,
+            user: req.user
+        });
+    })
+    .catch(error=>{
+        console.log(error);
+    })
 });
 
 // Render the editorial page for the landing page
 router.get('/new', auth.checkAuthenticated, (req, res)=>{
-    res.render('landing/new', {user: req.user});
+    res.render('landing/new');
 });
 
 //UPDATE landing page
@@ -20,8 +30,8 @@ router.put('/', auth.checkAuthenticated, (req, res) => {
     console.log(req.body); //req.body only contains textarea
     // fetch user_id
     //sanitize content before inserting
-    db.none(`UPDATE articles (content, author_id, modified) VALUES( , , CURRENT_DATE
-        WHERE type = $1 AND author_id = $2`, ['landing', ]) //FINISH QUERY
+    db.none(`UPDATE articles SET content = $1, author_id = $2, modified = NOW()
+        WHERE type = $3`, [req.body.editor1, req.user.id, 'landing']) 
         .then(
             res.redirect('/')
         )
@@ -37,11 +47,10 @@ router.get('/register', auth.checkNotAuthenticated, (req, res)=>{
 
 //POST registration page
 router.post('/register', auth.checkNotAuthenticated,  (req, res)=>{
-    let form = req.body;
+    let form = req.body; //shortens query
     if(form.bday === ''){
-        form.bday = null; // incase the user didn't enter bday, db will store null
+        form.bday = null; // incase the user didn't enter bday, db will store null intead of ''
     }
-    
     
     let hash = bcrypt.hashSync(form.password, 14); // hashing the password
     form.password = hash;

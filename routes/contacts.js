@@ -7,7 +7,10 @@ const   express     = require('express'),
 router.get('/', (req, res)=>{
     db.one(`SELECT content, created FROM articles WHERE type = $1`, ['contacts'])
     .then(article =>{
-        res.render('contacts/index', {article: article})
+        res.render('contacts/index', {
+            article: article,
+            user: req.user    
+        })
     })
     .catch(error =>{
         console.log('Something went wrong while extracting contacts article: ' + error);

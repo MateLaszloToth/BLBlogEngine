@@ -6,7 +6,7 @@ const   express     = require('express'),
 // GET about page
 router.get('/', (req, res)=>{
     //find posts in database and send it to the about page
-    db.one('SELECT content, author_id, created FROM articles WHERE title= $1', 'about')
+    db.one('SELECT content, author_id, created FROM articles WHERE type= $1', 'about')
     .then(article => {
         console.log("successfully retrieved about article");
         res.render('about/index', { 

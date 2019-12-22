@@ -6,11 +6,11 @@
     <div class="container content-bg">
         <article>
             <h2>Rólam</h2>
-            <p><%- about %></p>  
+            <p><%- article.content %></p>  
         </article>  
         <% if(user && user.isadmin){ %>
             <div class="flex-container">
-                <a class="button" href="new">Szerkeszt</a>
+                <a class="button" href="/about/new">Szerkeszt</a>
             </div>
         <% } %>
     </div>

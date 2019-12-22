@@ -1,10 +1,12 @@
 <% include ../partials/header %>
 <main>
-    <div class="container">
-        <div class="grid-wrapper content-bg" >
+    <div class="container content-bg">
             <% if(user && user.isadmin){ %>
-                <button href="/blog/new">Post</button>
+                <!-- <div> -->
+                    <a class="button" href="/blog/new">Új hozzáadása</a>
+                <!-- </div> -->
             <% } %>
+        <div class="grid-wrapper" >                
             <% posts.forEach(post => { %>
                <div class="grid-item">
                     <a href="/blog/<%= post.art_id %>">

@@ -29,6 +29,11 @@ router.get('/', (req, res)=>{
     }); 
 });
 
+//GET new post form
+router.get('/new', (req, res)=>{
+    res.render('blog/new', {csrfToken: req.csrfToken()})
+});
+
 //GET Individual post page
 router.get('/:post_id', (req, res)=>{
     db.one(`SELECT art_id, users.f_name l_name, users.l_name f_name,
@@ -65,6 +70,8 @@ router.get('/:post_id', (req, res)=>{
             res.redirect('back');
         });
 });
+
+
 
 //POST new comment
 router.post('/:post_id/comments', auth.checkAuthenticated, (req, res)=>{

@@ -38,6 +38,10 @@ header + img{
 .content-bg{ /* background of the content of the page */
    background-color: rgba(0, 0, 0, 0.831);
    border-radius: 25px;
+   margin-top: 140px; /* fall back for legacy browsers */
+   margin-top: 15vh; /* header plus some space */
+   margin-bottom: 60px; /* fall back for legacy browsers */
+   margin-bottom: 6vh;
 }
 
 article{
@@ -58,12 +62,10 @@ img + .container{
 
 .container{
    width: 70vw;
-   margin-top: 9vh; /* the height of the header */
    margin-left: auto;
    margin-right: auto;
    box-sizing: border-box;
-   min-height: 100vh;
-   
+   min-height: 100vh;   
 }
 
 /* EDIT BUTTON */
@@ -103,9 +105,8 @@ form button{
    display: grid;
    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
    grid-auto-rows: minmax(200px, auto);
-   margin-top: 140px; /* fall back for legacy browsers */
-   margin-top: 15vh; /* the height of the header */
 }
+
 .grid-item{
    
 }

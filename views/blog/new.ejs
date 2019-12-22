@@ -1,0 +1,38 @@
+<% include ../partials/header %>
+<script type="text/javascript" src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+
+<main>
+    <div class="container content-bg">
+        <form>
+            <div>
+                <label for="imgPath">Kép elérési útvonal</label>
+                <input type="text" name="imgPath" id="imgPath">
+            </div>
+            <div>
+                <label for="intro">Intro</label>
+                <textarea name="intro" id="intro" rows="8" cols="80">
+
+                </textarea>
+            </div>
+            <div>
+                <label for="postContent">Post tartalma</label>
+                <textarea name="postContent" id="postContent" rows="10" cols="80">
+                        This is my textarea to be replaced with CKEditor.
+                </textarea>
+                <script>
+                    // Replace the <textarea id="editor1"> with a CKEditor
+                    // instance, using default configuration.
+                    CKEDITOR.replace( 'editor1', {
+                        customConfig: '',
+                        height: '60vh' 
+                    });
+                </script>
+            </div>
+            <div>
+                <button type="submit">Küldés</button>
+            </div>
+        </form>
+    </div>
+</main>
+
+<% include ../partials/footer %>

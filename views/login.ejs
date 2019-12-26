@@ -1,11 +1,28 @@
 <% include partials/header %>
 <div class="container">
-<h1>Belépés</h1>
-<form action="/login" method="POST">
-    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-    email: <input type="email" name="email" required>
-    password: <input type="password" name="password" required>
-    <button type="submit">Belépés</button>
-</form>
+    <div class="flex-column ">
+        <div class="dyn-box content-bg">
+        <h1>Belépés</h1>
+        <form action="/login" method="POST">
+            <div class="auth-container flex-column">
+                <input class="input-field" type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <div class="flex-item">
+                    <label class="form-label" for="email">Email:</label>
+                    <input class="input-field" type="email" name="email" id="pword" required>
+                </div>
+                <div class="flex-item">
+                    <label class="form-label" for="password">Jelszó</label>
+                    <input class="input-field" type="password" name="password" id="password" required>
+                </div>
+                <div class="flex-item">
+                    <button class="button" type="submit">Belépés</button>
+                </div>
+                <div class="flex-item">
+                    <p>Vagy <a href="/register">regisztrálj</a> itt!</p>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
 </div>
 <% include partials/footer %>

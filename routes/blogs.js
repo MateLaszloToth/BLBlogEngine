@@ -31,7 +31,10 @@ router.get('/', (req, res)=>{
 
 //GET new post form
 router.get('/new', (req, res)=>{
-    res.render('blog/new', {csrfToken: req.csrfToken()})
+    res.render('blog/new', {
+        csrfToken: req.csrfToken(),
+        user: req.user //define to show correct login/logout button
+    });
 });
 
 //GET Individual post page
@@ -49,13 +52,10 @@ router.get('/:post_id', (req, res)=>{
                 WHERE article_id = $1
                 ORDER BY created DESC`, [post.art_id]) // first and last names are swapped because Hungarian names appear in reverse order
             .then(comments => {
-                if(req.user && req.user.id){
-                    var id = req.user.id;
-                }
                 res.render('blog/post', {
                     post: post,
                     comments: comments,
-                    user_id: req.user&&req.user.id ? req.user.id : null, // user exist only after authentication
+                    user: req.user, //define to show correct login/logout button
                     csrfToken: req.csrfToken()
                 });
             })
@@ -75,7 +75,6 @@ router.get('/:post_id', (req, res)=>{
 
 //POST new comment
 router.post('/:post_id/comments', auth.checkAuthenticated, (req, res)=>{
-    console.log(req.user);
     db.none(`INSERT INTO comments(content, article_id, author_id)
             VALUES($1, $2, $3)`, [req.body.newComment, Number(req.body.article_id), req.user.id])
     .then(

@@ -1,15 +1,42 @@
 <% include partials/header %>
 <div class="container">
-    <h1>Regisztráció</h1>
-    <form action="" method="POST">
-            <input type="hidden" name=_csrf value="<%=csrfToken%>" >
-    f-name: <input type="text" name="f_name" required>
-    l-name: <input type="text" name="l_name" required>
-        bday: <input type="date" name="bday">
-        phone: <input type="text" name="phone">
-        email: <input type="email" name="email" required>
-        password: <input type="password" name="password" required>
-        <button type="submit">Küldés</button>
-    </form>
+    <div class="flex-column">
+        <div class="dyn-box content-bg">
+            <h1>Regisztráció</h1>
+            <form action="/register" method="POST">
+                <div class="auth-container flex-column">
+                    <input class="input-field" type="hidden" name=_csrf value="<%=csrfToken%>" >
+
+                    <div class="flex-item">
+                        <label class="form-label" for="l_name">Vezeték Név *</label>
+                        <input class="input-field" type="text" name="l_name" id="l_name" required>
+                    </div>
+                    <div class="flex-item">
+                        <label class="form-label" for="f_name">Kereszt Név *</label>
+                        <input class="input-field" type="text" name="f_name" id="f_name" required>
+                    </div>
+                    <div class="flex-item">
+                        <label class="form-label" for="bday">Születési Dátum</label>
+                        <input class="input-field" type="date" name="bday" id="bday" >
+                    </div>
+                    <div class="flex-item">
+                        <label class="form-label" for="phone">Telefonszám</label>
+                        <input class="input-field" type="text" name="phone" id="phone">
+                    </div>
+                    <div class="flex-item">
+                        <label class="form-label" for="email">Email *</label>
+                        <input class="input-field" type="email" name="email" id="email" required>
+                    </div>
+                    <div class="flex-item">
+                        <label class="form-label" for="pword">Jelszó *</label>
+                        <input class="input-field" type="password" name="pword" id="pword" required>
+                    </div>
+                    <div class="flex-item">
+                        <button class="button" type="submit">Küldés</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 <% include partials/footer %>

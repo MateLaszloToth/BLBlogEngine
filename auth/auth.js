@@ -16,8 +16,6 @@ auth.loginRequired = function(req, res, next){
 }
 
 auth.checkAuthenticated = (req, res, next)=>{
-    console.log("checkAuth");
-    console.log('req.isAuthenticated(): ' + req.isAuthenticated());
     if(!req.isAuthenticated()){
         return res.redirect('/login'); // next('/login')
     }
@@ -25,8 +23,6 @@ auth.checkAuthenticated = (req, res, next)=>{
 }
 
 auth.checkNotAuthenticated = (req, res, next)=>{
-    console.log("checkNotA");
-    console.log('req.isAuthenticated(): ' + req.isAuthenticated());
     if(req.isAuthenticated()){
         return res.redirect('/');
     }

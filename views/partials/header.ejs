@@ -18,7 +18,11 @@
                         <li><a href="/blog"><i></i>Blog</a></li>
                         <li><a href="/about"><i></i>Rólam</a></li>
                         <li><a href="/contacts"><i></i>Kapcsolat</a></li>
-                        <li><a href="/login"><i></i>Belépés</a></li>      
+                        <% if(!user) { %>
+                            <li><a href="/login"><i></i>Belépés</a></li>   
+                        <% }else{ %>
+                            <li><a href="/logout"><i></i>Kilépés</a></li>
+                        <% } %>  
                     </ul>
                 </nav>
     </header>

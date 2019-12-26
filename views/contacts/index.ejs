@@ -4,11 +4,11 @@
 <main class="wide-bg">
     <div class="container content-bg">
         <article>
-            <%= article.content %>
+            <%- article.content %>
         </article>  
         <% if(user && user.isadmin){ %>
             <div class="flex-container">
-                <a class="button" href="new">Szerkeszt</a>
+                <a class="button" href="/contacts/edit">Szerkeszt</a>
             </div>
         <% } %> 
     </div>

@@ -5,7 +5,7 @@
 <main class="wide-bg">
     <div class="container content-bg">
         <article>
-            <%= article.content %>
+            <%- article.content %>
         </article>
         <% if(user && user.isadmin){ %> <!--locals.user could be used instead of typeof -->
         <div class="flex-container">

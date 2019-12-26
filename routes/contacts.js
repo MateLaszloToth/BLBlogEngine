@@ -22,20 +22,23 @@ router.get('/', (req, res)=>{
 });
 
 // GET new page
-router.get('/new', auth.checkAuthenticated, (req, res)=>{
-    res.render('contacs/new');
+router.get('/edit', auth.checkAuthenticated, (req, res)=>{
+    res.render('contacts/edit', {
+        csrfToken: req.csrfToken(),
+        user: req.user //define to show correct login/logout button
+    });
 });
 
 // UPDATE contacts page
 router.put('/', auth.checkAuthenticated, (req, res) =>{
     let sanContent = req.body.editor1; // Sanitize content !!
     db.none(`UPDATE articles SET content = $1, author_id = $2, modified = NOW()
-        WHERE type = $3`, [sanContent, Number(req.body.id), 'contacts'])
+        WHERE type = $3`, [sanContent, Number(req.user.id), 'contacts'])
     .then(
         res.redirect('/contacts')
     )
     .catch(error =>{
-        console.log('Erro during updating contacts: ' + error);
+        console.log('Error during updating contacts: ' + error);
     });
 });
 

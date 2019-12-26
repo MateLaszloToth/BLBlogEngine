@@ -5,9 +5,10 @@ const   localStrategy   = require('passport-local').Strategy,
 function initialize(passport){
 
     const authenticateUser = function(email, password, done){
-        db.oneOrNone(`SELECT user_id id, f_name, l_name, email, pword_hash hash, TO_CHAR(bday, 'yyyy mm dd') bday, phone
-    FROM users
-    WHERE email = $1`, [email])
+        db.oneOrNone(`SELECT user_id id, f_name, l_name, email,
+                pword_hash hash, TO_CHAR(bday, 'yyyy mm dd') bday, phone
+            FROM users
+            WHERE email = $1`, [email])
         .then(user =>{
             if(!user){
                 console.log('Wrong email');
@@ -48,7 +49,6 @@ function initialize(passport){
                 console.log('User not found by id during deserialization');
                 return done(null, false);
             }
-            console.log(user);
             done(null, user);
         })
         .catch(error =>{

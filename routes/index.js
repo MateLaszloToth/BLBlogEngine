@@ -10,10 +10,19 @@ router.get('/', (req, res)=>{
         FROM articles
         WHERE type = $1`, ['landing'])
     .then(article => {
-        res.render('landing/index', {
-            article: article,
-            user: req.user
-        });
+        db.any(`SELECT f_name l_name, l_name f_name, content, title
+            FROM recommendations`)
+        .then(recs =>{
+            res.render('landing/index', {
+                article: article,
+                user: req.user,
+                recs: recs
+            });
+        })
+        .catch(error =>{
+            console.log("ERROR while query recommendations: " + error);
+        })
+        
     })
     .catch(error=>{
         console.log(error);

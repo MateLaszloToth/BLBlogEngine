@@ -1,18 +1,180 @@
 <% include ../partials/header %>
-<div class="main-bg" style="background-image: url('https://baratosifit.files.wordpress.com/2019/04/cropped-victor-freitas-569958-unsplash.jpg')"></div>
+<div class="main-bg" style="background-image: url('https://baratosifit.files.wordpress.com/2019/04/cropped-victor-freitas-569958-unsplash.jpg')">
+    <div class="welcome-bg">
+        <div class="welcome">
+            <p>We believe in you</p>
+            <h2><span>Be proud</span><br><span>Be fit</span></h2>
+        </div>
+    </div>
+</div>
 <!-- <img src="https://baratosifit.files.wordpress.com/2019/04/cropped-victor-freitas-569958-unsplash.jpg"
     alt="Levente ökölpacsizik egy barátjával egy fárasztó edzés után"> -->
-<main class="wide-bg">
-    <div class="container content-bg">
-        <article>
-            <%- article.content %>
-        </article>
-        <% if(user && user.isadmin){ %> <!--locals.user could be used instead of typeof -->
-        <div class="flex-container">
-            <a class="button" href="new">Szerkeszt</a>
-        </div>
-        <% } %>
+   
+<main class="">
+     <!-- INTRO -->
+    <div class="intro-bg">
+        <section class="intro grid-1-2">
+            <div class="flex-column">
+                <img class="round-pic" src="https://mlbepoovgq92.i.optimole.com/w:276/h:276/q:75/https://i2.wp.com/proudnfit.com/wp-content/uploads/2019/10/imageedit_1_7875800184.jpg">
+                <div class="">
+                    <p class="center">Barátosi Levente</p >
+                    <p class="center">Személyi edző - Pszichológus</p>
+                    <p class="center">Erőemelés, TRX, Funkcionális edzés</p>
+                </div>
+            </div>
+            <div class="">
+                <article class="center">
+                    <%- article.content %>
+                </article>
+                <% if(user && user.isadmin){ %> <!--locals.user could be used instead of typeof -->
+                <div class="flex-container">
+                    <a class="button" href="new">Szerkeszt</a>
+                </div>
+                <% } %>
+            </div>
+        </section>
     </div>
 </main>
+<div class="b-w-slanted-l-r slanted-size"></div> <!--slanted-bg-->
+<!-- SERVICES -->
+<div class="services-bg" >
+    <section class="services">
+        <div class="flex-column"> <!--flex column -->
+            <!-- title -->
+            <h2>Szolgáltatások</h2>
+            <div class="grid-1-3"> <!--grid 1/3-->
+                <div class="center">
+                    <div class="thumbnail">
+                        <div class="div-bg rounded-pic"></div>
+                        <h3><span>Étrend tervezés</span></h3>
+                        <p class="left">Nem titok, hogy a mozgás és az étkezés elválaszthatatlan egymástól. Akár a testszépítés, akár az egészséges életmód, akár valamilyen képességfejlesztés a cél, egy idő után a nem megfelelő táplálkozás miatt újabb akadályokba fogsz ütközni. Indulj jól már a legelején. Nyugi nem olyan vészes, mint gondolnád. Nem kell elhagynod  a szénhidrátot meg ilyesmi. Sőt, mit szólsz ha azt mondom, hogy még csokit is ehetsz? Nyilván hallottad már és nem hiszed el. Megértem. Azért adj egy esélyt, szerintem meggyőzlek 😉 </p>
+                    </div>
+                    <a type="button" class="button"  href="" >Mit egyek?</a>
+                </div>
+                <div class="center">
+                    <div class="thumbnail">
+                        <div class="div-bg rounded-pic"></div>
+                        <h3><span>Edzés tervezés</span></h3>
+                        <p class="left">Ha elolvastad kedves bevezetőmet, akkor már tudod, hogy terv nélkül hamar megáll a fejlődés. Számos programot kínálok neked, amelyek közül válogathatsz. Legyen a célod fogyás, izomtömeg gyarapítás, általános kondícionálás stb.  szerintem találsz majd magadnak valót. Ne félj, nem csak egy táblázatot tobok oda neked, aztán oldd meg. Minden program részletes magyarázatot tartalmaz annak érdekében, hogy ne csak vakon csináld, hanem értsd is, ami történik. Segítek a gyakorlat és súlyválasztásban is, hogy optimális legyen a terhelés, így pedig az előrehaladásod is.</p>
+                    </div>
+                    <a type="button" class="button" href="">Hogyan edzek?</a>
+                </div>
+                <div class="center">
+                    <div class="thumbnail">
+                        <div class="div-bg rounded-pic"></div>
+                        <h3><span>Személyi edzés</span></h3>
+                        <p class="left">Miért válassz személyi edzést? Erről egy egész cikket írtam, amelyet IDE kattintva megtalálsz. Röviden az a tapasztalatom, hogy még jobban tudod növelni a hatékonyságod, hogyha egy külső személy vissza tud jelezni neked gyakorlataid minőségéről. Máshogy lát rá egy adott helyzetre és hasznos tanácsokkal tud ellátni téged. Egy hozzá értő azonnal tud módosítani, ha arra szükség van, és felügyelete jelentősen csökkenti a sérülés veszélyét is. A legfontosabb, hogy mindezek személyre szabottan történnek. Ahány ember, annyi féle megoldás. Nem minden megoldás jó minden embernek. Ez tényleg egy VIP élmény. EZ RÓLAD SZÓL! </p>
+                    </div>
+                    <a type="button" class="button"  href="">Együtt könnyebb!</a>
+                </div>
+        </div>
+    </section>
+</div>
+<div class="w-b-slanted-l-r slanted-size"></div> <!--slanted-bg-->
+<!-- RECOMMENDATIONS -->
+<div class="rec-bg">
+    <section class="rec">
+        <div class="flex-column"> <!--flex column -->
+            <h2><span>Vendégeim Mondták</span></h2>
+            <div class="container center"> <!-- recommendations -->
+                <% recs.forEach(rec => { %>
+                    <p class="center">
+                        <%= rec.content %>
+                    </p>
+                    <p class="center">
+                        <%= rec.f_name %> <%= rec.l_name %>
+                    </p>
+                    <p class="center">
+                        <%= rec.title %>
+                    </p>
+                <% }) %>
+                <span>Bal nyíl</span>...<span>Jobb nyíl</span>
+                <% if(user && user.isadmin){ %>
+                    <a class="button" href="/rec">Szerkeszt</a>
+                <% } %>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="b-w-slanted-r-l slanted-size"></div> <!--slanted-bg-->
+<!-- PATH TO TAKE -->
+<div class="path-bg">
+    <section class="path">
+        <div class=""> <!--title-->
+            alsjkfnglajsnfjnasjnvjnasjvnj;asnvn;asvnkasnvkljnaskjvakljsvkjas
+        </div>
+        <div>   <!-- description -->
+            ;slnvl;asnvfasv;kasvsalnvlnaskvnaksnvavnasknvksanvkns
+        </div>
+    </section>
+</div>
+<div class="w-r-slanted-r-l slanted-size"></div> <!--slanted-bg-->
+<!-- QUIZ -->
+<div class="quiz-bg">
+    <section class="quiz">
+        <h2 class="center"><span>Melyik programmal kezdjek?</span></h2>
+        <div class="container">
+            <p class="center">Tanácstalan vagy, hogy melyik programot válaszd? Túl sok az opció és nem tudsz dönteni? Segítek! Töltsd ki egy rövid kvízt és azonnal megtudhatod, hogy melyik program felel meg neked leginkább. Csak 2 perc az egész! </p>
+        </div>
+    </section>
+</div>
+<div class="r-w-slanted-r-l slanted-size"></div> <!--slanted-bg-->
+<!-- PACKAGES -->
+<div class="packages-bg">
+    <section class="packages">
+        <div class="flex-column"> <!-- flex column-->
+            <!-- title -->
+            <h2 ><span>Válassz csomagjaim közül!</span></h2>
+            <!-- content -->
+            <div class=""> <!--det. width of packages grid-->
+                <div class="grid-1-3"> <!--grid kozep 3-->
+                    <img src="https://mlbepoovgq92.i.optimole.com/w:342/h:171/q:75/https://i1.wp.com/proudnfit.com/wp-content/uploads/2019/11/dietplanbignagyog.jpg">
+                    <img src="https://mlbepoovgq92.i.optimole.com/w:342/h:171/q:75/https://i1.wp.com/proudnfit.com/wp-content/uploads/2019/11/dietplanbignagyog.jpg">
+                    <img src="https://mlbepoovgq92.i.optimole.com/w:342/h:171/q:75/https://i1.wp.com/proudnfit.com/wp-content/uploads/2019/11/dietplanbignagyog.jpg">
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="w-b-slanted-r-l slanted-size"></div> <!--slanted-bg-->
+<!-- ASK -->
+<div class="ask-bg">
+    <section class="ask">
+        <div class="flex-column"> <!-- flex column-->
+            <div class=""> <!-- title -->
+                <h2><span>Kérdésed van? Írd meg!</span></h2>
+            </div>
+            <div class="grid-1-2"> <!--grid kozep 1/2-->
+                <form>
+                    <div class="flex-column">
+                        <label for="">Vezetéknév*</label>
+                        <input type="text" name="" id="">
+                        <label for="">Keresztnév*</label>
+                        <input type="text" name="" id="">
+                        <label for="">Email*</label>
+                        <input type="text" name="" id="">
+                        <label for="">Tárgy</label>
+                        <input type="text" name="" id="">
+                        <label for="">Üzenet*</label>
+                        <textarea name="" id=""></textarea>
+                        <button class="button" type="submit"><span>Küldés</span></button>
+                    </div>
+                </form>
+                <div class="flex-column"> <!-- Contacts -->
+                    <div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio doloribus consequatur maxime ratione magnam corrupti? Ratione doloribus, expedita laborum quidem in at nemo consequatur recusandae corrupti culpa amet, numquam aspernatur?</p>
+                    </div>
+                    <div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio doloribus consequatur maxime ratione magnam corrupti? Ratione doloribus, expedita laborum quidem in at nemo consequatur recusandae corrupti culpa amet, numquam aspernatur?</p>
+                    </div>
+                    <div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio doloribus consequatur maxime ratione magnam corrupti? Ratione doloribus, expedita laborum quidem in at nemo consequatur recusandae corrupti culpa amet, numquam aspernatur?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
 
 <% include ../partials/footer %>

@@ -2,13 +2,77 @@ html, body{
    width: 100vw; 
    margin: 0;
    padding: 0;
+   color: black;
+   font-size: 10px;
+}
+
+/* FONTS */
+.welcome{
+   font-size: 6rem;
+   color: white;
+}
+
+.intro{
+   font-size: 2rem;
+   color: white;
+}
+.services{
+   font-size: 2rem;
+   color: black;
+}
+.rec{ /* recommendations */
+   font-size: 2rem;
+   color: white;
+}
+.path{
+   font-size: 2rem;
+   color: black;
+}
+.quiz{
+   font-size: 2rem;
+   color: white;
+}
+.packages{
+   font-size: 2rem;
+   color: black
+}
+.ask{
+   font-size: 2rem;
    color: white;
 }
 
 h1{
    margin: 20px 0 25px 0;
    text-align: center;
+   text-justify: center;
 }
+
+/* POSITION TEXT*/
+.center{
+   text-align: center;
+}
+.left{
+   text-align: start;
+   padding-left: 2px;
+}
+.intro{
+   padding-top: 80px;
+}
+.intro article{
+   padding: 0;
+}
+
+/* POSITION MM */
+.round-pic{
+   border-radius: 50%;
+}
+.rounded-pic{
+   border-radius: 20px;
+}
+.thumbnail{
+   min-height: 680px;
+}
+
 
 /* BACKGROUND */
 .main-bg{
@@ -18,7 +82,6 @@ h1{
    height: 100vh;
    background-position: 50% 50%;
    top: 9vh;
-   margin-top: 9vh;
 }
 
 header + img{
@@ -30,15 +93,74 @@ header + img{
    z-index: -1;
    box-sizing: border-box;
 }
+/* Welcome BG */
+.welcome-bg{
+   text-align: center;
+   padding-top: 100px; 
+}
+/* Intro BG */
+.intro-bg{
+   background-color: black;
+}
+/* Services BG */
+.services-bg{
+   background-color: white;
+}
+/* Recommendations */
+.rec-bg{
+   background-color: black;
+}
+.path-bg{
+   background-color: white;
+}
+.quiz-bg{
+   background-color: #c60000;
+   padding: 25px 0 25px 0;
+}
+.packeges-bg{
+   background-color: white;
+}
+.ask-bg{
+   background-color: black;
+}
+.div-bg{ /* services grid pics */
+   width: 100%;
+   height: 250px;
+   background-image: url(https://mlbepoovgq92.i.optimole.com/w:342/h:171/q:75/https://i1.wp.com/proudnfit.com/wp-content/uploads/2019/11/dietplanbignagyog.jpg);
+   background-size: cover;
+}
+.b-w-slanted-l-r{ /* black top white bottom slanted bg */
+   background-image: linear-gradient(3deg, white 49%,black 50%);
+}
+.w-b-slanted-l-r{ /* white top black bottom slanted bg */
+   background-image: linear-gradient(3deg, black 49%,white 50%);  
+}
+.b-w-slanted-r-l{ /* black top white bottom slanted bg */
+   background-image: linear-gradient(-3deg, white 49%,black 50%);
+}
+.w-b-slanted-r-l{ /* white top black bottom slanted bg */
+   background-image: linear-gradient(-3deg, black 49%,white 50%);  
+}
+.w-r-slanted-r-l{ /* white top red bottom slanted bg */
+   background-image: linear-gradient(-3deg, #c60000 49%,white 50%);
+}
+.r-w-slanted-r-l{ /* red top white bottom slanted bg */
+   background-image: linear-gradient(-3deg, white 49%, #c60000 50%);
+}
+.slanted-size{ /* transition element between bgs */
+   width: 100%;
+   height: 100px;
+}
+
+/* TRANSFORMATIONS */
+
 
 /* MAIN DOCUMENT */
 .container{
-   width: 70%;
+   width: 85%;
    margin-left: auto;
    margin-right: auto;
    box-sizing: border-box;
-   min-height: 100%;
-   min-height: 100vh;   
 }
 
 .wide-bg{ /* wide background of the content portion of the page */
@@ -146,6 +268,43 @@ img + .container{
    text-decoration: none;
 }
 
+/* Grid layout */
+.grid-wrapper{
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+   grid-auto-rows: minmax(200px, 1fr);
+}
+.grid-item{
+   
+}
+.grid-item img{
+   box-sizing: border-box;
+   
+}
+.grid-item a{
+   text-decoration: none;
+   color: white;
+}
+.grid{
+   display: grid;
+}
+/* grid-#ofRows-#ofCols */
+.grid-1-2{
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+}
+.grid-1-3{
+   width: 88%;
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   justify-content: center;
+   column-gap: 30px;
+}
+.center-content{
+   justify-items: center;
+   text-align: center;
+}
+
 /* CKEditor */
 
 form{
@@ -158,38 +317,4 @@ form{
 form button{
    width: 25rem;
    box-sizing: border-box;
-}
-
-/* Grid layout */
-
-
-
-.grid-wrapper{
-   display: grid;
-   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-   grid-auto-rows: minmax(200px, auto);
-}
-
-.grid-item{
-   
-}
-
-
-.grid-item img{
-   box-sizing: border-box;
-   
-}
-
-.grid-item a{
-   text-decoration: none;
-   color: white;
-}
-
-.grid{
-   display: grid;
-}
-
-.center-content{
-   justify-items: center;
-   text-align: center;
 }
